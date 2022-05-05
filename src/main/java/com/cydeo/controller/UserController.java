@@ -21,15 +21,15 @@ public class UserController {
 //        this.userService = userService;
 //    }
 //
-//    @GetMapping("/create")
-//    public String createUser(Model model) {
-//
-//        model.addAttribute("user", new UserDTO());
-//        model.addAttribute("roles", roleService.findAll());
-//        model.addAttribute("users", userService.findAll());
-//
-//        return "/user/create";
-//    }
+    @GetMapping("/create")
+    public String createUser(Model model) {
+
+        model.addAttribute("user", new UserDTO());
+        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("users", userService.findAll());
+
+        return "/user/create";
+    }
 //
 //
 //    @PostMapping("/create")
