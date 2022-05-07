@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -63,5 +62,12 @@ public class UserServiceImpl implements UserService {
     public void deleteByUserName(String username) {
         userRepository.deleteByUserName(username);
 
+    }
+
+    @Override
+    public void delete(String username) {
+        User user = userRepository.findByUserName(username);
+        user.setIsDeleted(true);
+        userRepository.save(user);
     }
 }
