@@ -34,16 +34,7 @@ public class UserController {
 
 
     @PostMapping("/create")
-    public String insertUser(@Valid @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model) {
-
-        if (bindingResult.hasErrors()) {
-
-            model.addAttribute("roles", roleService.listAllRoles());
-            model.addAttribute("users", userService.listAllUsers());
-
-            return "/user/create";
-
-        }
+    public String insertUser(@ModelAttribute("user") UserDTO user, Model model) {
 
         userService.save(user);
         return "redirect:/user/create";
